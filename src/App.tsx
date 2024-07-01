@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+// import "./App.css";
+import DeviceList from "./components/pages/DeviceList/DeviceList";
+import AppBar from "./components/shared/appbar/Appbar";
+import ClickPhoto from "./components/pages/clickPhoto/ClickPhoto";
+import LoginPage from "./components/pages/auth/loginPage/LoginPage";
+import DashBoard from "./components/pages/dashboard/DashBoard";
+import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+import RefillStockForm from "./components/pages/refillStockForm/RefillStockForm";
+import AddMachineForm from "./components/pages/addMachineForm/AddMachiceForm";
+import ViewRefillDetails from "./components/pages/viewRefillDetails/ViewRefillDetails";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="App min-h-screen">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/dashboard" />} />
 
-export default App
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/add-Activity" element={<RefillStockForm />} />
+          <Route path="/all-Rooms" element={<AddMachineForm />} />
+          <Route path="/refill-details" element={<ViewRefillDetails />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/home" element={<DeviceList />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+};
+
+export default App;
