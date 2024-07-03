@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Endpoint, Headers, Params, Payload } from "../../@types/api/api.types";
-import { url, version } from "../../config/config";
+import { url, version } from "../../configs/apiconfig";
 
 const get = async (
   endpoint: Endpoint,

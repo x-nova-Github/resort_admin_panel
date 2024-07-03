@@ -1,28 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  Select,
-  Typography,
-} from "@material-tailwind/react";
+import { Card, CardBody, CardHeader, Select } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
-import {
-  ChartBarIcon,
-  PresentationChartLineIcon,
-} from "@heroicons/react/24/outline";
-import { getSalesbyWeek, getTotalSell } from "../../../utils/apis/Apis";
+import { PresentationChartLineIcon } from "@heroicons/react/24/outline";
+import { api } from "../../../utils/api";
 
 const MonthlySalesBarChart = () => {
   const [chartData, setChartData] = useState<any>({
     type: "area",
     height: 300,
-    series: [
-      { name: "Standard cottage", data: [20, 30, 40, 60, 30] },
-      { name: "Deluxe room", data: [25, 25, 20, 40, 70] },
-      { name: "Executive suite", data: [10, 20, 10, 30, 40] },
-    ],
+    series: [],
     options: {
       chart: {
         toolbar: { show: false },
@@ -47,17 +34,7 @@ const MonthlySalesBarChart = () => {
             fontWeight: 400,
           },
         },
-        categories: [
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ],
+        categories: [],
       },
       yaxis: {
         labels: {
@@ -86,41 +63,45 @@ const MonthlySalesBarChart = () => {
   const [selectedOption, setSelectedOption] = useState("Monthly");
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let response: any;
-        if (selectedOption === "Monthly") {
-          response = await getTotalSell();
-        } else {
-          response = await getSalesbyWeek();
-        }
-        const salesData = response.data;
+    fetchMonthlyRoomBookings();
+  }, []); // Fetch data on component mount
 
-        const categories = salesData.map((data: any) => {
-          return selectedOption === "Monthly"
-            ? `${data.month}-${data.year}`
-            : `${data.week}`;
-        });
-        const sales = salesData.map((data: any) => data.totalSales);
+  const fetchMonthlyRoomBookings = async () => {
+    try {
+      const result = await api.charts.getRoomBookingsChart();
 
-        setChartData((prevState: any) => ({
-          ...prevState,
-          series: [{ name: "Sales", data: sales }],
-          options: {
-            ...prevState.options,
-            xaxis: {
-              ...prevState.options.xaxis,
-              categories,
-            },
+      // Prepare series data for each room type
+      const roomNames = Array.from(
+        new Set(result.map((item: any) => item.roomName))
+      );
+
+      const updatedSeries = roomNames.map((roomName: any) => {
+        const data = result
+          .filter((item: any) => item.roomName === roomName)
+          .map((item: any) => item.monthlyBookings);
+        return { name: roomName, data };
+      });
+
+      // Extract months from result and remove duplicates
+      const categories = Array.from(
+        new Set(result.map((item: any) => item.month))
+      );
+
+      setChartData((prevState: any) => ({
+        ...prevState,
+        series: updatedSeries,
+        options: {
+          ...prevState.options,
+          xaxis: {
+            ...prevState.options.xaxis,
+            categories,
           },
-        }));
-      } catch (error) {
-        console.error("Error fetching sales data:", error);
-      }
-    };
-
-    fetchData();
-  }, [selectedOption]);
+        },
+      }));
+    } catch (error) {
+      console.error("Error fetching monthly room bookings:", error);
+    }
+  };
 
   return (
     <Card className="w-full md:w-1/2 mx-auto mb-10">
@@ -137,10 +118,10 @@ const MonthlySalesBarChart = () => {
           <select
             value={selectedOption}
             onChange={(e: any) => setSelectedOption(e.target.value)}
-            className="mt-2"
+            className=""
           >
             <option value="Monthly">Hetalbon Eco Resort</option>
-            {/* <option value="Weekly">Mach Ranga Chart</option> */}
+            {/* Add more options if needed */}
           </select>
         </div>
       </CardHeader>

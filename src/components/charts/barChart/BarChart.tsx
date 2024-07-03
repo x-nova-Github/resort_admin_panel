@@ -8,13 +8,13 @@ import {
 } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
 import { ChartBarIcon } from "@heroicons/react/24/outline";
-import { getRegisterDevice } from "../../../utils/apis/Apis";
+import { api } from "../../../utils/api";
 
 const MonthlySalesBarChart = () => {
   const [chartData, setChartData] = useState<any>({
     type: "bar",
     height: 300,
-    series: [{ name: "Bookings", data: [50, 40, 120, 100] }],
+    series: [{ name: "Bookings", data: [] }],
     options: {
       chart: {
         toolbar: { show: false },
@@ -39,17 +39,7 @@ const MonthlySalesBarChart = () => {
             fontWeight: 400,
           },
         },
-        categories: [
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ],
+        categories: [],
       },
       yaxis: {
         labels: {
@@ -75,33 +65,33 @@ const MonthlySalesBarChart = () => {
     },
   });
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response:any = await getRegisterDevice();
-  //       const salesData = response.data;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.charts.getBookingsChart();
+        const monthlyBookings = response;
 
-  //       const categories = salesData.map((data: any) => `${data.month}-${data.year}`);
-  //       const sales = salesData.map((data: any) => data.totalDevices);
+        const categories = monthlyBookings.map((data: any) => data.month);
+        const bookings = monthlyBookings.map((data: any) => data.totalBookings);
 
-  //       setChartData((prevState:any) => ({
-  //         ...prevState,
-  //         series: [{ name: "Machines registered", data: sales }],
-  //         options: {
-  //           ...prevState.options,
-  //           xaxis: {
-  //             ...prevState.options.xaxis,
-  //             categories,
-  //           },
-  //         },
-  //       }));
-  //     } catch (error) {
-  //       console.error("Error fetching sales data:", error);
-  //     }
-  //   };
+        setChartData((prevState: any) => ({
+          ...prevState,
+          series: [{ name: "Bookings", data: bookings }],
+          options: {
+            ...prevState.options,
+            xaxis: {
+              ...prevState.options.xaxis,
+              categories,
+            },
+          },
+        }));
+      } catch (error) {
+        console.error("Error fetching booking stats:", error);
+      }
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
   return (
     <Card className="w-full md:w-1/2 mx-auto mb-10">
@@ -116,7 +106,7 @@ const MonthlySalesBarChart = () => {
         </div>
         <div>
           <Typography variant="h6" color="blue-gray">
-            This Year Sales
+            This Year Bookings
           </Typography>
         </div>
       </CardHeader>

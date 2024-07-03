@@ -2,12 +2,12 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import LoginTop from "../../../../shared/loginTob/LoginTop";
 import { EyeIcon, EyeSlashIcon, UserIcon } from "@heroicons/react/24/outline";
-import { loginAdmin } from "../../../../../utils/apis/Apis";
+// import { loginAdmin } from "../../../../../utils/apis/Apis";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "../../../../../contexts/authContext/authContext";
+// import AuthContext from "../../../../../contexts/authContext/authContext";
 
 const LoginForm: React.FC = () => {
-  const { setUser, user } = useContext(AuthContext);
+  // const { setUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
@@ -22,16 +22,6 @@ const LoginForm: React.FC = () => {
       user_id: username,
       password: password,
     };
-
-    try {
-      const response = await loginAdmin(payload);
-      setUser(response.data.result);
-      setUsername("");
-      setPassword("");
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("Login error:", error);
-    }
   };
 
   return (

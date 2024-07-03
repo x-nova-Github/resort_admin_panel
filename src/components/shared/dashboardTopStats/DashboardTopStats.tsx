@@ -13,21 +13,11 @@ import {
   SunIcon,
   TruckIcon,
 } from "@heroicons/react/24/outline";
-import { getDeviceDetails, getSellDetails } from "../../../utils/apis/Apis";
 
 const DashboardTopStats = () => {
   const [sales, setsales] = useState<any>();
   const [devices, setDevices] = useState<any>();
-  const getAllSales = async () => {
-    const response = await getSellDetails();
-    console.log(response);
-    setsales(response?.data);
-  };
-  const getAllDevices = async () => {
-    const response = await getDeviceDetails();
-    console.log(response);
-    setDevices(response?.data);
-  };
+
   const rows = [
     {
       title: "Total Bookings",
@@ -46,11 +36,6 @@ const DashboardTopStats = () => {
       icon: ExclamationTriangleIcon,
     },
   ];
-
-  useEffect(() => {
-    getAllSales();
-    getAllDevices();
-  }, []);
 
   return (
     <>

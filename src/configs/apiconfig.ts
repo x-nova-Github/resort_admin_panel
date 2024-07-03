@@ -1,9 +1,8 @@
-export const baseURL="http://localhost:8181"
-// 
-// export const baseURL = "https://bag-vending-machine.onrender.com";
+export const url = "https://hetalbon-node-server.onrender.com";
+export const port = "8989";
+export const version = "v1";
 
-export const payload: Object = {};
-
-export const header: Object = {
+export const headers = {
+  Accept: "application/json",
   "Content-Type": "application/json",
 };

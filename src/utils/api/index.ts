@@ -1,3 +1,8 @@
+import { getBookingsChart, getRoomBookingsChart } from "./charts/charts";
+
 export const api = {
-  auth: {},
+  charts: {
+    getBookingsChart,
+    getRoomBookingsChart,
+  },
 };
