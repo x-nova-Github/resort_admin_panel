@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+
 import { Card, CardBody, CardHeader, Select } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
 import { PresentationChartLineIcon } from "@heroicons/react/24/outline";

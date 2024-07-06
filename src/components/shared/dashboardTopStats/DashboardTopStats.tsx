@@ -1,38 +1,34 @@
-import React, { useEffect, useState } from "react";
+
 import SmallCard from "../smallCard/SmallCard";
 import {
-  CalendarDaysIcon,
-  CalendarIcon,
+  
   CogIcon,
   ComputerDesktopIcon,
-  CurrencyRupeeIcon,
+
   ExclamationTriangleIcon,
   MapPinIcon,
-  ShieldExclamationIcon,
-  ShoppingBagIcon,
-  SunIcon,
-  TruckIcon,
+ 
 } from "@heroicons/react/24/outline";
 
-const DashboardTopStats = () => {
-  const [sales, setsales] = useState<any>();
-  const [devices, setDevices] = useState<any>();
+const DashboardTopStats = ({dashboardStats}:any) => {
+  
 
   const rows = [
     {
       title: "Total Bookings",
-      count: 5,
+    
+    count: dashboardStats?.totalBookings,
       icon: ComputerDesktopIcon,
     },
-    { title: "Total Income", count: "₹" + 5440, icon: MapPinIcon },
+    { title: "Total Income", count: "₹" + dashboardStats?.totalSumPrice, icon: MapPinIcon },
     {
       title: "This Year Bookings",
-      count: 5,
+      count: dashboardStats?.totalBookingsThisYear,
       icon: CogIcon,
     },
     {
       title: "This Month Bookings",
-      count: 3,
+      count: dashboardStats?.totalBookingsThisMonth,
       icon: ExclamationTriangleIcon,
     },
   ];

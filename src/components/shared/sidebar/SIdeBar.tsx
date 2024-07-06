@@ -43,7 +43,7 @@ const SideBar = () => {
               Dashboard
             </ListItem>
           </Link>
-          <Link to="/home">
+          <Link to="/booking">
             <ListItem className="text-gray-100">
               <ListItemPrefix>
                 <InboxIcon className="h-5 w-5" />

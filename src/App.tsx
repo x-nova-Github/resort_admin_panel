@@ -1,8 +1,12 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // import "./App.css";
-import DeviceList from "./components/pages/DeviceList/DeviceList";
+
 import LoginPage from "./components/pages/auth/loginPage/LoginPage";
 import DashBoard from "./components/pages/dashboard/DashBoard";
+import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+
+import ActivityTable from "./components/pages/activityTable/ActicityTable";
+import BookingList from "./components/pages/bookingList/Bookinglist";
 
 const App = () => {
   return (
@@ -12,11 +16,9 @@ const App = () => {
           <Route path="/" element={<Navigate to="/dashboard" />} />
 
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/add-Activity" element={<></>} />
-          <Route path="/all-Rooms" element={<></>} />
-          <Route path="/refill-details" element={<></>} />
+          <Route path="/add-Activity" element={<ActivityTable />} />
           <Route path="/dashboard" element={<DashBoard />} />
-          <Route path="/home" element={<DeviceList />} />
+          <Route path="/booking" element={<BookingList />} />
         </Routes>
       </BrowserRouter>
     </div>
