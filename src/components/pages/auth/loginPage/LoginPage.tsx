@@ -1,6 +1,3 @@
-import React from "react";
-import login from "../../../../assets/images/login.png";
-import LoginTop from "../../../shared/loginTob/LoginTop";
 import LoginForm from "./loginForm/LoginForm";
 import LoginImage from "./loginImage/LoginImage";
 

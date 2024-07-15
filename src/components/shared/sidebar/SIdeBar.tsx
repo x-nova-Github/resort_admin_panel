@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SideProfile from "./sideProfile/SideProfile";
 import {
   Chip,
@@ -9,13 +9,12 @@ import {
 } from "@material-tailwind/react";
 import {
   ChatBubbleBottomCenterTextIcon,
-  Cog6ToothIcon,
+  
   InboxIcon,
   InformationCircleIcon,
-  PowerIcon,
+ 
   PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
+
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
