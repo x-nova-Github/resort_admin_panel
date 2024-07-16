@@ -14,7 +14,7 @@ const ActivityTable = () => {
 
   const handleOpen = () => setOpen(!open);
   const handleClose = () => setOpen(!open);
-  const [colDefs, setColDefs] = useState<any>([
+  const [colDefs] = useState<any>([
     { field: "name" },
     { field: "description" },
     { field: "duration" },

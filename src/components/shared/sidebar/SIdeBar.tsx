@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import SideProfile from "./sideProfile/SideProfile";
 import {
   Chip,
@@ -19,11 +19,11 @@ import {
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  // const [isOpen, setIsOpen] = useState(true);
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+  // const toggleSidebar = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
   return (
     <>

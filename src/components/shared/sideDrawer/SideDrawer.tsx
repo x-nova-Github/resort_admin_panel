@@ -1,5 +1,5 @@
-import { ArrowLeftStartOnRectangleIcon, BellIcon, ClockIcon, Cog6ToothIcon, CreditCardIcon, UserCircleIcon, UserIcon } from '@heroicons/react/24/outline'
-import { Avatar, Button, Dialog, DialogBody, DialogFooter, DialogHeader, IconButton, Menu, MenuHandler, MenuItem, MenuList, Typography } from '@material-tailwind/react'
+import { ArrowLeftStartOnRectangleIcon, Cog6ToothIcon,  UserIcon } from '@heroicons/react/24/outline'
+import {  Dialog,  IconButton, Menu, MenuHandler, MenuItem, MenuList, Typography } from '@material-tailwind/react'
 import React, { useContext } from 'react'
 import AuthContext from '../../../contexts/authContext/authContext'
 import LogoutDrawer from '../logoutModal/LogoutDrawer'

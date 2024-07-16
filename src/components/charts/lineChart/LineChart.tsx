@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Card, CardBody, CardHeader, Select } from "@material-tailwind/react";
+import { Card, CardBody, CardHeader } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
 import { PresentationChartLineIcon } from "@heroicons/react/24/outline";
 import { api } from "../../../utils/api";

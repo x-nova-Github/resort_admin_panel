@@ -1,6 +1,4 @@
-import { ShoppingBagIcon } from "@heroicons/react/24/outline";
-import { Chip } from "@material-tailwind/react";
-import React from "react";
+
 
 const SmallCard = ({ title, count, Icon }: any) => {
   return (

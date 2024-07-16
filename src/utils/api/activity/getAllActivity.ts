@@ -1,7 +1,7 @@
 import { request } from "../api";
 import {headers}  from "../../../configs/apiconfig";
 import { MESSAGE } from "../../../constants/api/message";
-import { Payload } from "../../../@types/api/api.types";
+// import { Payload } from "../../../@types/api/api.types";
 
 const { get } = request;
 

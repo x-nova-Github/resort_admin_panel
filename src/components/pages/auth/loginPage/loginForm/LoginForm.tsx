@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import LoginTop from "../../../../shared/loginTob/LoginTop";
 import { EyeIcon, EyeSlashIcon, UserIcon } from "@heroicons/react/24/outline";
 // import { loginAdmin } from "../../../../../utils/apis/Apis";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 // import AuthContext from "../../../../../contexts/authContext/authContext";
 
 const LoginForm: React.FC = () => {
-  // const { setUser, user } = useContext(AuthContext);
-  const navigate = useNavigate();
+ 
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,10 +16,10 @@ const LoginForm: React.FC = () => {
   };
 
   const handleLogin = async () => {
-    const payload = {
-      user_id: username,
-      password: password,
-    };
+    // const payload = {
+    //   user_id: username,
+    //   password: password,
+    // };
   };
 
   return (

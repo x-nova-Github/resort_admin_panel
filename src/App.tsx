@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import LoginPage from "./components/pages/auth/loginPage/LoginPage";
 import DashBoard from "./components/pages/dashboard/DashBoard";
-import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+
 
 import ActivityTable from "./components/pages/activityTable/ActicityTable";
 import BookingList from "./components/pages/bookingList/Bookinglist";
