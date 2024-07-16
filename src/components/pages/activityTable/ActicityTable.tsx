@@ -52,7 +52,7 @@ const ActivityTable = () => {
       <div className=' p-10' data-dialog-backdrop="dialog" data-dialog-backdrop-close="true">
         <h2 className='text-2xl text-green-600'>Bookings Details</h2>
 
-        <Button data-ripple-light="true" onClick={handleOpen} data-dialog-target="dialog">Add Activity</Button>
+        <Button data-ripple-light="true" onClick={handleOpen} className='mt-5 mb-4' data-dialog-target="dialog">Add Activity</Button>
         <Dialog open={open} handler={handleOpen}>
 
           <AddActivityForm handleclose={handleClose} />
@@ -62,7 +62,7 @@ const ActivityTable = () => {
 
         <div
           className="ag-theme-quartz mt-3 " // applying the grid theme
-          style={{ height: 300, width: 700, overflowX: "auto" }} // the grid will fill the size of the parent container
+          style={{ height: 300, width: 900, overflowX: "auto" }} // the grid will fill the size of the parent container
         >
 
           <AgGridReact

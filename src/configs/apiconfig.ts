@@ -1,4 +1,4 @@
-export const url = "https://sundarban-resort-node-server.onrender.com";
+export const url = "https://d3630964imf05y.cloudfront.net";
 export const port = "8989";
 export const version = "v1";
 
