@@ -88,7 +88,7 @@ const BookingList = () => {
         <h2 className='text-2xl text-green-600'>Bookings Details</h2>
         <div
           className="ag-theme-quartz mt-3  " // applying the grid theme
-          style={{ height: 300, width:900, overflowX: "auto" }} // the grid will fill the size of the parent container
+          style={{ height: 300, width:"100%", overflowX: "auto" }} // the grid will fill the size of the parent container
         >
 
 
